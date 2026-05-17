@@ -399,20 +399,6 @@
     }
   }
   
-  /* Barras do hamburguer — escondidas por padrão no desktop */
-  .nav-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: stretch;
-    gap: 6px;
-    width: 44px;
-    height: 44px;
-    padding: 0 10px;
-    background: transparent;
-    z-index: 110;
-  }
-  
   .nav-toggle-bar {
     display: block;
     height: 2px;
@@ -421,22 +407,25 @@
     border-radius: 1px;
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
-  
+
   /* Animação X quando menu aberto */
   body.nav-menu-open .nav-toggle .nav-toggle-bar:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
   }
-  
+
   body.nav-menu-open .nav-toggle .nav-toggle-bar:nth-child(2) {
     opacity: 0;
   }
-  
+
   body.nav-menu-open .nav-toggle .nav-toggle-bar:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
   }
-  
-  /* Backdrop oculto no desktop */
-  .nav-backdrop { display: none; }
+
+  /* Hamburguer e backdrop ocultos no desktop */
+  @media (min-width: 769px) {
+    .nav-toggle { display: none; }
+    .nav-backdrop { display: none; }
+  }
   
   
   /* ─────────────────────────────────────────────────────

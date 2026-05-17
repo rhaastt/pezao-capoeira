@@ -33,19 +33,23 @@ function initHero() {
 window.addEventListener("load", initHero);
 
 // ── 2. REVEAL ON SCROLL ─────────────────────────────
+const revealEls = document.querySelectorAll(".reveal");
+let revealPending = revealEls.length;
+
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("visible");
         revealObserver.unobserve(entry.target);
+        if (--revealPending === 0) revealObserver.disconnect();
       }
     });
   },
   { threshold: 0.1 }
 );
 
-document.querySelectorAll(".reveal").forEach((el) => {
+revealEls.forEach((el) => {
   revealObserver.observe(el);
 });
 
@@ -99,7 +103,7 @@ const statsObserver = new IntersectionObserver(
         primeStatsForAnimation();
         runStatCountUps();
       }
-      statsObserver.unobserve(entry.target);
+      statsObserver.disconnect();
     });
   },
   { threshold: 0.25 }
@@ -265,66 +269,6 @@ if (!storedTarget || storedTarget < Date.now()) {
   localStorage.setItem(COUNTDOWN_KEY, String(storedTarget));
 }
 startCountdown(new Date(storedTarget));
-
-// ── 7. CARROSSEL DE PROVA SOCIAL (INFINITO + AUTOMÁTICO) ──
-function initProvaCarousel() {
-  const carousel = document.querySelector("[data-carousel]");
-  if (!carousel) return;
-
-  const track = carousel.querySelector(".prova-carousel-track");
-  if (!track) return;
-
-  const baseSlides = Array.from(track.querySelectorAll(".prova-slide"));
-  if (baseSlides.length < 2) return;
-
-  const firstClone = baseSlides[0].cloneNode(true);
-  track.appendChild(firstClone);
-
-  let index = 0;
-  let timerId = null;
-  const intervalMs = 3200;
-
-  function goTo(nextIndex, withTransition = true) {
-    track.style.transition = withTransition ? "transform 0.65s cubic-bezier(0.22, 1, 0.36, 1)" : "none";
-    track.style.transform = `translate3d(-${nextIndex * 100}%, 0, 0)`;
-  }
-
-  function nextSlide() {
-    index += 1;
-    goTo(index, true);
-  }
-
-  function startAuto() {
-    if (prefersReducedMotion || timerId) return;
-    timerId = setInterval(nextSlide, intervalMs);
-  }
-
-  function stopAuto() {
-    if (!timerId) return;
-    clearInterval(timerId);
-    timerId = null;
-  }
-
-  track.addEventListener("transitionend", () => {
-    if (index !== baseSlides.length) return;
-    index = 0;
-    goTo(index, false);
-  });
-
-  carousel.addEventListener("mouseenter", stopAuto);
-  carousel.addEventListener("mouseleave", startAuto);
-  carousel.addEventListener("focusin", stopAuto);
-  carousel.addEventListener("focusout", startAuto);
-  document.addEventListener("visibilitychange", () => {
-    if (document.hidden) stopAuto();
-    else startAuto();
-  });
-
-  goTo(0, false);
-  startAuto();
-}
-
-initProvaCarousel();
 
 function initLucideIcons() {
   if (typeof lucide === "undefined") return;
