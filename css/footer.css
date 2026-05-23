@@ -76,6 +76,11 @@
   background: rgba(240, 0, 0, 0.08);
 }
 
+.footer-social-link > svg.lucide {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
 .footer-social-link--ig img {
   width: 1.25rem;
   height: 1.25rem;
