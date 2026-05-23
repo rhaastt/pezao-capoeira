@@ -1,0 +1,164 @@
+/* ── Reset & Base ───────────────────────────────────── */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+img, video {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-body);
+}
+
+
+/* ── Ícones Lucide ──────────────────────────────────── */
+
+svg.lucide {
+  width: 1.125em;
+  height: 1.125em;
+  flex-shrink: 0;
+  stroke: currentColor;
+}
+
+.nav-links a > svg.lucide {
+  width: 1rem;
+  height: 1rem;
+  opacity: 0.88;
+}
+
+.nav-links a:hover > svg.lucide,
+.nav-links a.nav-active > svg.lucide {
+  opacity: 1;
+}
+
+.btn-hero > svg.lucide {
+  width: 1.1em;
+  height: 1.1em;
+}
+
+.stat-label > svg.lucide {
+  width: 1rem;
+  height: 1rem;
+  opacity: 0.75;
+}
+
+.pain-list li > svg.lucide,
+.target-list li > svg.lucide {
+  width: 1.35rem;
+  height: 1.35rem;
+  flex-shrink: 0;
+  margin-top: 0.12em;
+  color: var(--accent);
+  stroke: var(--accent);
+}
+
+.modulo-title > svg.lucide {
+  width: 1.35rem;
+  height: 1.35rem;
+  color: var(--accent);
+}
+
+.diferencial-title > svg.lucide {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 0.2em;
+  color: var(--accent);
+}
+
+.expectativas-li-icon {
+  display: flex;
+  flex-shrink: 0;
+  margin-top: 0.12em;
+  color: var(--accent);
+}
+
+.expectativas-li-icon svg.lucide {
+  width: 1rem;
+  height: 1rem;
+}
+
+.incluso-li-icon {
+  display: flex;
+  flex-shrink: 0;
+  margin-top: 0.14em;
+  color: var(--accent);
+}
+
+.incluso-li-icon svg.lucide {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.depoimento-quote-icon-wrap {
+  display: flex;
+  flex-shrink: 0;
+  margin-top: 0.15em;
+  color: var(--accent);
+  opacity: 0.55;
+}
+
+.depoimento-quote-icon-wrap svg.lucide {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.btn-cta > svg.lucide    { width: 1em; height: 1em; }
+.btn-compra > svg.lucide { width: 1.15rem; height: 1.15rem; }
+
+.garantia > svg.lucide {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.garantia span {
+  flex: 0 1 auto;
+  max-width: 26rem;
+}
+
+.urgencia-sub > svg.lucide {
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--accent);
+}
+
+.footer-links a > svg.lucide {
+  width: 0.95rem;
+  height: 0.95rem;
+  opacity: 0.75;
+}
+
+.footer-links a:hover > svg.lucide {
+  opacity: 1;
+}

@@ -1,0 +1,203 @@
+#oferta {
+  padding: var(--section-py) var(--px);
+  background: var(--surface);
+}
+
+.oferta-wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: start;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: 2.5rem;
+  align-items: start;
+}
+
+.oferta-detalhes {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  width: min(100%, 42rem);
+  max-width: 100%;
+}
+
+@media (max-width: 992px) {
+  .oferta-wrap { grid-template-columns: 1fr; }
+  .oferta-preview { max-width: 520px; }
+  .oferta-preview img { max-height: 280px; object-fit: cover; }
+}
+
+.incluso-title {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 1.25rem;
+}
+
+.incluso-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.incluso-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.incluso-list li::before { display: none; }
+
+.incluso-list li.bonus { color: var(--accent); }
+.incluso-list li.bonus::before { display: none; }
+
+/* Card de preço */
+
+@keyframes preco-cta-soft-glow {
+  0%, 100% {
+    box-shadow:
+      0 0 0 1px rgba(245, 197, 24, 0.12),
+      0 12px 40px rgba(0, 0, 0, 0.25);
+  }
+  50% {
+    box-shadow:
+      0 0 0 1px rgba(245, 197, 24, 0.28),
+      0 12px 48px rgba(245, 197, 24, 0.08);
+  }
+}
+
+.preco-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .preco-card { animation: preco-cta-soft-glow 5s ease-in-out infinite; }
+}
+
+.preco-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+}
+
+.preco-de       { font-size: 0.9rem; color: var(--muted); }
+.preco-por      { font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.preco-parcelas { font-size: 0.85rem; color: var(--muted); margin-bottom: 1rem; }
+
+.preco-atual {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: var(--accent);
+  line-height: 1;
+  margin: 0.5rem 0;
+}
+
+/* Botão de compra */
+
+.btn-compra {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 16px;
+  background: var(--accent);
+  color: #000;
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.btn-compra:hover {
+  opacity: 0.88;
+  transform: translateY(-2px);
+}
+
+/* Bloco de confiança Hotmart */
+
+.hotmart-trust {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.hotmart-trust-logo-link {
+  display: inline-block;
+  line-height: 0;
+  opacity: 0.95;
+  transition: opacity 0.2s;
+}
+
+.hotmart-trust-logo-link:hover { opacity: 1; }
+
+.hotmart-logo {
+  height: auto;
+  max-height: 36px;
+  width: auto;
+  max-width: 140px;
+  display: block;
+}
+
+.hotmart-trust-copy {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 26rem;
+}
+
+.hotmart-trust-copy strong { color: var(--text); font-weight: 600; }
+
+.hotmart-trust--inline {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  border-top: none;
+  margin-top: 1rem;
+  padding-top: 0;
+  gap: 0.5rem 0.85rem;
+}
+
+.hotmart-logo--sm     { max-height: 22px; max-width: 96px; }
+.hotmart-trust-copy--sm { font-size: 0.78rem; max-width: 22rem; text-align: left; }
+
+@media (max-width: 480px) {
+  .hotmart-trust--inline  { flex-direction: column; text-align: left; }
+}
+
+/* Garantia */
+
+.garantia {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.45rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-align: left;
+  margin-top: 0.5rem;
+  line-height: 1.5;
+}

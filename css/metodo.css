@@ -1,0 +1,235 @@
+#metodo {
+  padding: var(--section-py) var(--px);
+  background: var(--surface);
+}
+
+.metodo-intro {
+  max-width: 720px;
+  margin-bottom: 2.5rem;
+}
+
+/* Grid dos módulos */
+
+.modulos-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+@media (min-width: 900px) {
+  .modulos-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+.modulo {
+  display: grid;
+  grid-template-columns: minmax(96px, 128px) minmax(0, 1fr);
+  gap: 1rem 1.15rem;
+  align-items: stretch;
+  padding: 1.25rem 1.35rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.22);
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .modulo:hover {
+    border-color: rgba(240, 0, 0, 0.35);
+    box-shadow:
+      0 10px 36px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(240, 0, 0, 0.08);
+  }
+}
+
+.modulo-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.modulo-thumb {
+  margin: 0;
+  align-self: stretch;
+  min-height: 7.5rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  position: relative;
+}
+
+.modulo-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.modulo-num {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+  color: rgba(255, 255, 255, 0.14);
+  line-height: 1;
+  margin-bottom: 0.15rem;
+}
+
+.modulo-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2.2vw, 1.45rem);
+  letter-spacing: 0.03em;
+  margin-bottom: 0.25rem;
+}
+
+.modulo-desc {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .modulo {
+    grid-template-columns: minmax(72px, 92px) minmax(0, 1fr);
+    gap: 0.75rem 0.9rem;
+    padding: 1rem 1.1rem;
+  }
+
+  .modulo-thumb,
+  .modulo-thumb img { min-height: 6.25rem; }
+
+  .modulo-num   { font-size: 1.65rem; }
+  .modulo-title { font-size: clamp(1rem, 4vw, 1.25rem); }
+}
+
+/* Divisor + card de aulas exemplo */
+
+.metodo-aulas-bridge {
+  margin: 0 0 1rem;
+  max-width: min(100%, 56rem);
+  padding-top: 1.75rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: left;
+  border-top: 1px solid var(--border);
+}
+
+.aulas-preview {
+  width: 100%;
+  max-width: min(100%, 56rem);
+  margin: 0 0 2rem;
+  padding: clamp(1.5rem, 3vw, 2rem);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 28px rgba(0, 0, 0, 0.18);
+}
+
+.aulas-preview-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2.8vw, 1.75rem);
+  color: var(--text);
+  margin-bottom: 0.85rem;
+  line-height: 1.25;
+}
+
+.aulas-preview-title > svg.lucide {
+  width: 1.45rem;
+  height: 1.45rem;
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.aulas-preview-intro {
+  font-size: clamp(1rem, 1.6vw, 1.08rem);
+  color: var(--muted);
+  margin-bottom: 1.35rem;
+  line-height: 1.65;
+  max-width: 48rem;
+}
+
+.aulas-preview-list {
+  list-style: none;
+  counter-reset: metodo-aula;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.65rem 1.75rem;
+  margin-bottom: 1.1rem;
+}
+
+.aulas-preview-list li {
+  position: relative;
+  padding-left: 2.25rem;
+  font-size: clamp(0.98rem, 1.5vw, 1.05rem);
+  color: var(--text);
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  counter-increment: metodo-aula;
+}
+
+.aulas-preview-list li::before {
+  content: counter(metodo-aula, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.12em;
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+  line-height: 1.45;
+  min-width: 1.5rem;
+}
+
+.aulas-preview-nota {
+  font-size: clamp(0.92rem, 1.4vw, 1rem);
+  color: var(--muted);
+  font-style: italic;
+  margin-top: 0.85rem;
+  line-height: 1.55;
+}
+
+.metodo-cta-wrap {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 0 2rem;
+}
+
+.btn-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 14px 28px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-cta:hover {
+  background: var(--accent);
+  color: #000;
+}

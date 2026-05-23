@@ -1,0 +1,88 @@
+/* ── Utilitários de Layout ──────────────────────────── */
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.section {
+  padding: var(--section-py) var(--px);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: 2rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.section-sub {
+  font-size: 1.05rem;
+  color: var(--muted);
+  font-weight: 300;
+  max-width: 540px;
+  margin-bottom: 3rem;
+}
+
+
+/* ── Reveal on Scroll ───────────────────────────────── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .reveal-stagger > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.visible .reveal-stagger > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal.visible .reveal-stagger > *:nth-child(1)      { transition-delay: 0.06s; }
+.reveal.visible .reveal-stagger > *:nth-child(2)      { transition-delay: 0.12s; }
+.reveal.visible .reveal-stagger > *:nth-child(3)      { transition-delay: 0.18s; }
+.reveal.visible .reveal-stagger > *:nth-child(4)      { transition-delay: 0.24s; }
+.reveal.visible .reveal-stagger > *:nth-child(5)      { transition-delay: 0.3s; }
+.reveal.visible .reveal-stagger > *:nth-child(6)      { transition-delay: 0.36s; }
+.reveal.visible .reveal-stagger > *:nth-child(7)      { transition-delay: 0.42s; }
+.reveal.visible .reveal-stagger > *:nth-child(8)      { transition-delay: 0.48s; }
+.reveal.visible .reveal-stagger > *:nth-child(9)      { transition-delay: 0.54s; }
+.reveal.visible .reveal-stagger > *:nth-child(10)     { transition-delay: 0.58s; }
+.reveal.visible .reveal-stagger > *:nth-child(n + 11) { transition-delay: 0.62s; }

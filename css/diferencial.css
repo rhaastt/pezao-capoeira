@@ -1,0 +1,162 @@
+.section-diferencial {
+  padding: var(--section-py) var(--px);
+  background: var(--surface);
+}
+
+.diferencial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1.25rem, 3vw, 2rem);
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.diferencial-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.diferencial-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  z-index: 2;
+  pointer-events: none;
+}
+
+.diferencial-card:hover {
+  border-color: rgba(240, 0, 0, 0.45);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(240, 0, 0, 0.12);
+  transform: translateY(-4px);
+}
+
+.diferencial-card-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.diferencial-card-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, transparent 45%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.diferencial-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1.35rem 1.35rem 1.5rem;
+  flex: 1;
+}
+
+.diferencial-img {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.diferencial-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.diferencial-card:hover .diferencial-img img { transform: scale(1.04); }
+
+@media (prefers-reduced-motion: reduce) {
+  .diferencial-card,
+  .diferencial-card:hover       { transform: none; }
+  .diferencial-card:hover .diferencial-img img { transform: none; }
+}
+
+.diferencial-title {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.03em;
+  margin: 0;
+  color: var(--text);
+}
+
+.diferencial-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.diferencial-fecho {
+  font-size: 1.1rem;
+  color: var(--muted);
+  font-weight: 300;
+  font-style: italic;
+  text-align: left;
+  max-width: 520px;
+  margin: 0 0 3rem;
+  line-height: 1.6;
+}
+
+.expectativas {
+  border-top: 1px solid var(--border);
+  padding-top: 2.5rem;
+  max-width: 640px;
+  margin: 0;
+}
+
+.expectativas-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.expectativas-intro {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
+  font-weight: 300;
+}
+
+.expectativas-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.expectativas-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.expectativas-list li::before { display: none; }

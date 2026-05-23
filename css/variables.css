@@ -1,0 +1,17 @@
+:root {
+  --bg:        #0a0a0a;
+  --surface:   #111111;
+  --border:    #222222;
+  --accent:    #f00000;
+  --accent-2:  #d94f1f;
+  --text:      #f0f0f0;
+  --muted:     #ffffff;
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+
+  --max-width:  1140px;
+  --section-py: 5rem;
+  --px:         clamp(1.25rem, 6vw, 4rem);
+  --radius:     10px;
+}

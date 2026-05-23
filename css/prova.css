@@ -1,0 +1,99 @@
+#prova { padding: var(--section-py) var(--px); }
+
+.depoimentos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.depoimento {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.28s ease;
+}
+
+.depoimento:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.depoimento-foto {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--accent);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.depoimento:hover .depoimento-foto { transform: scale(1.08); }
+
+@media (prefers-reduced-motion: reduce) {
+  .depoimento:hover .depoimento-foto { transform: none; }
+}
+
+.depoimento-texto {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.65;
+  font-style: italic;
+  flex: 1;
+}
+
+.depoimento-autor {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-style: normal;
+  line-height: 1.5;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem 0.75rem;
+}
+
+.depoimento-autor strong {
+  flex: 1;
+  min-width: 0;
+}
+
+.depoimento-ig {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.depoimento-ig img {
+  width: 1.125rem;
+  height: 1.125rem;
+  display: block;
+}
+
+.depoimento-ig:hover {
+  border-color: var(--accent);
+  background: rgba(240, 0, 0, 0.1);
+  transform: scale(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .depoimento-ig:hover { transform: none; }
+}
